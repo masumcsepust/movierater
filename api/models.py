@@ -6,6 +6,19 @@ class Movie(models.Model):
     title=models.CharField(max_length=40)
     description=models.TextField(max_length=300)
 
+    def no_of_rating(self):
+        ratings=Rating.objects.filter(movie=self)
+        return len(ratings)
+    def avg_rating(self):
+        sum=0
+        ratings=Rating.objects.filter(movie=self)
+        for rating in ratings:
+            sum=sum+rating.stars
+        if len(ratings)>0:
+            return sum/len(ratings)
+        else:
+            return 0
+
 class Rating(models.Model):
     movie=models.ForeignKey(Movie,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
