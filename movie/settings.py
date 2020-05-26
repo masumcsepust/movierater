@@ -29,8 +29,8 @@ ALLOWED_HOSTS = [
     'mrmasum.herokuapp.com'
 ]
 
-SECRET_KEY =config('-$=^7_j5fkx+wdx6p5-^zls5c&4i7w0c)+qv291k0^()jb)3vs')
-DEBUG = config('DEBUG', default=True ,cast=bool)
+SECRET_KEY =config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False ,cast=bool)
 # Application definition
 
 INSTALLED_APPS = [
